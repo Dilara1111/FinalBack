@@ -1,0 +1,38 @@
+﻿@using Final_Back.ViewModels.Plant;
+@model PlantsIndexVM
+@*@section Style{
+    <link rel="stylesheet" href="~/assets/css/plants.css">
+}*@
+<section class="second" style="padding: 100px 200px; margin: 100px 58px; background-color:#fff;">
+    <div class="home-shop">
+        <div>
+            <nav style=" padding: 20px;">
+                <a href="index.html">Home</a>&nbsp;/&nbsp;Shop
+                <p style="padding: 20px 0;">Showing 1-9 of 25 results</p>
+            </nav>
+        </div>
+        <div>
+            <nav>
+                <p>Default sorting </p>
+            </nav>
+        </div>
+    </div>
+
+            <div class="shopping-container">
+    @{
+        foreach (var products in Model.Products)
+        {
+                <div class="product">
+                    <img src="~/assets/img/@products.FilePath" alt="">
+                    <button class="add-to-cart" id="addToCart"><a href="" style="color: #fff;">Add to Cart</a></button>
+                    <div class="top"><h2 style="color:#141A0F;font-size: 16px;">@products.Name</h2></div>
+                    <div class=""><span style="color:#4d4f48; font-size: 13px;">@products.Description</span></div>
+                    <span style="color:#4d4f48;font-size: 14px;">@products.Price</span>
+                </div>
+        }
+    }
+            </div>
+
+
+</section>
+

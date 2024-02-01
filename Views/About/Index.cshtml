@@ -1,0 +1,43 @@
+﻿@using Final_Back.ViewModels.About;
+@model AboutIndexVM
+@section Style{
+    <link rel="stylesheet" href="~/assets/css/about.css">
+}
+<section style="padding: 100px 200px; margin: 100px 58px; background-color:#fff;">
+    <div class="title">
+        <div><h1 style="font-size: 72px;">@Model.AboutComponent.Name</h1></div>
+        <div style="padding-left: 500px;">
+            <p>__________</p>
+            <h3 style="padding-top: 50px; font-size: 32px;">@Model.AboutComponent.Title</h3>
+            <p style="font-size: 16px; padding-top: 10px;">@Model.AboutComponent.Description</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="~/assets/img/@Model.AboutComponent.FilePath" alt="">
+        <div class="play-icon"></div>
+        <!-- <i aria-hidden="true" class="eicon-play" style="background-color: #5c9735;"></i> -->
+    </div>
+    <div class="our-story" style="padding: 50px;">
+        <div><h6 style="font-size: 18px;">OUR STORY</h6></div>
+        <div style="padding-left: 500px;">
+            <p style="padding-top: 10px; font-size: 16px;">@Model.AboutContainer.Description</p>
+            <p style="padding-top: 10px; font-size: 16px;">@Model.AboutContainer.Description1</p>
+            <p style="padding-top: 10px; font-size: 16px;">@Model.AboutContainer.Description2</p>
+            <i style="text-align: center;font-size: 30px;color: #87ac90;" aria-hidden="true" class="fas @Model.AboutContainer.Icon"></i>
+            <p style="font-size: 18px;"><b>@Model.AboutContainer.Title</b></p>
+            <img src="~/assets/img/@Model.AboutContainer.PhotoPath" style="border-radius: 50%; margin:10px" alt="">
+            <span>@Model.AboutContainer.Name</span>
+            <p>@Model.AboutContainer.Position</p>
+        </div>
+    </div>
+</section>
+<section class="container2">
+    <div class="img">
+        @{
+            foreach(var images in Model.ImgContainer)
+            {
+                <div><img src="~/assets/img/@images.Image" alt=""></div>
+            }
+         }
+    </div>
+</section>

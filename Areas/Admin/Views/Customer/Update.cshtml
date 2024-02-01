@@ -1,0 +1,30 @@
+﻿@model Final_Back.Models.Customers
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Add Customer</div>
+            <hr>
+            <form method="post" asp-action="update" asp-controller="customer" asp-area="admin">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter Your Name">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Commentare</label>
+                    <input asp-for="Description" class="form-control" placeholder="Enter Your Commentare">
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+                 <div class="form-group">
+                <label asp-for="FilePath">Photo</label>
+                <input asp-for="FilePath" class="form-control" placeholder="Enter Your Photo">
+                <span class="text-danger" asp-validation-for="FilePath"></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-light px-4">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
