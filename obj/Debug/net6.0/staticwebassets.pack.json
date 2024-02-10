@@ -2381,6 +2381,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\contact.css"
     },
     {
+      "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\css\\login.css",
+      "PackagePath": "staticwebassets\\assets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\css\\plants.css",
       "PackagePath": "staticwebassets\\assets\\css\\plants.css"
     },
@@ -2543,6 +2547,10 @@
     {
       "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\plants-store-testimonials-avatar-img-2.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\plants-store-testimonials-avatar-img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\Basket.js",
+      "PackagePath": "staticwebassets\\assets\\js\\Basket.js"
     },
     {
       "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\app.js",

@@ -1,8 +1,11 @@
 ﻿@using Final_Back.ViewModels.Plant;
 @model PlantsIndexVM
-@*@section Style{
+@{
+    ViewBag.Title = "Plant";
+}
+@section Style{
     <link rel="stylesheet" href="~/assets/css/plants.css">
-}*@
+}
 <section class="second" style="padding: 100px 200px; margin: 100px 58px; background-color:#fff;">
     <div class="home-shop">
         <div>
@@ -32,7 +35,55 @@
         }
     }
             </div>
+    
+    <div style="display:flex; justify-content:center"> 
+        <ul style ="list-style-type: none;">
+            @{
+            for(int i = 1; i <= Model.PageCount; i++)
+            {                  
+                <a asp-action="index" asp-controller="plant" asp-route-page="@i" class="mkdf-pag-@(Model.Page == i?"active disabled":"inactive")">@i</a>                
+            }
+        }
+        </ul>
+    </div>
+    <script>
+        var urunlerDiv = document.getElementById('urunler');
+        var sonrakiSayfaBtn = document.getElementById('sonrakiSayfaBtn');
+        var sayfaNumarasi = 1;
+        var urunler = document.querySelectorAll('.product');
+        var urunlerAdet = urunler.length;
+        var urunlerPerSayfa = 9;
 
+        function sayfaGoster(sayfa) {
+            var baslangicIndex = (sayfa - 1) * urunlerPerSayfa;
+            var bitisIndex = baslangicIndex + urunlerPerSayfa;
+
+            for (var i = 0; i < urunlerAdet; i++) {
+                if (i >= baslangicIndex && i < bitisIndex) {
+                    urunler[i].style.display = 'block';
+                } else {
+                    urunler[i].style.display = 'none';
+                }
+            }
+        }
+
+        function sonrakiSayfayiGoster() {
+            sayfaNumarasi++;
+            if ((sayfaNumarasi - 1) * urunlerPerSayfa < urunlerAdet) {
+                sayfaGoster(sayfaNumarasi);
+            } else {
+                // Eğer tüm ürünler gösterildiyse, isteğe bağlı olarak başa dönebilir veya bir mesaj gösterebilirsiniz.
+                sayfaNumarasi = 1;
+                sayfaGoster(sayfaNumarasi);
+            }
+        }
+
+        // İlk sayfayı göster
+        sayfaGoster(sayfaNumarasi);
+
+        // Düğmeye tıklandığında sonraki sayfayı göster
+        sonrakiSayfaBtn.addEventListener('click', sonrakiSayfayiGoster);
+    </script>
 
 </section>
 

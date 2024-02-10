@@ -1,19 +1,22 @@
 ﻿@using Final_Back.ViewModels.Home;
 @model HomeIndexVM
 @section Style{
-    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/plants.css">
 }
-<div class="">
-    
-    <div class="elementor-title">
-        <h6 style="font-size:18px; padding-top:200px;">@Model.ElementorTitle.Title</h6>
-        <h1 style="font-size: 72px; margin: 40px">@Model.ElementorTitle.Description </h1>
-        <h1 style="font-size: 72px;">Your Home</h1>
-        <div style="padding-bottom: 300px">
-            <button class="button-wrapper;"><a href="" style="color: #000; padding: 15px 20px; font-size: 15px; display: inline-block;margin:30px">Shop Now</a></button>
+@section Header{
+    <div class="">
+
+        <div class="elementor-title">
+            <h6 style="font-size:18px; padding-top:200px;">@Model.ElementorTitle.Title</h6>
+            <h1 style="font-size: 72px; margin: 40px">@Model.ElementorTitle.Description </h1>
+            <h1 style="font-size: 72px;">Your Home</h1>
+            <div style="padding-bottom: 300px">
+                <button class="button-wrapper;"><a href="" style="color: #000; padding: 15px 20px; font-size: 15px; display: inline-block">Shop Now</a></button>
+            </div>
         </div>
     </div>
-</div>
+}
 
 <section class="second" style="padding: 0 200px; margin: 0 58px">
     <div style="padding:104px 30px 74px">
@@ -39,7 +42,7 @@
 </section>
 <section class="third">
     <div class="our-story-img">
-        <img src="@Model.OurStory.FilePath" alt="" style="width: 600px; height: 600px;">
+        <img src="~/assets/img/@Model.OurStory.FilePath" alt="" style="width: 600px; height: 600px;">
     </div>
     <div class="our-story">
         <h2 style="font-size: 18px;">@Model.OurStory.Name</h2>

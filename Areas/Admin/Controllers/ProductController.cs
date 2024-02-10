@@ -1,4 +1,5 @@
-﻿using Final_Back.DAL;
+﻿using Final_Back.Areas.Admin.ViewModels.Product;
+using Final_Back.DAL;
 using Final_Back.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,14 @@ namespace Final_Back.Areas.Admin.Controllers
                 await Product.Photo.CopyToAsync(fileStream);
             }
             Product.FilePath = filename;
+            var product = new Products()
+            {
+                Name = Product.Name,
+                Description = Product.Description,
+                Price = Product.Price,
+                FilePath = Product.FilePath,
+                Quantity = Product.Quantity,
+            };
             await _dbContext.Products.AddAsync(Product);
             await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -65,29 +74,33 @@ namespace Final_Back.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
+            var Product = await _dbContext.Products.FindAsync(id);
             if (id == null)
             {
                 return BadRequest();
             }
-            Products Product = await _dbContext.Products.FindAsync(id);
-            if (Product == null)
+            var model = new ProductUpdateVM
             {
-                return NotFound();
-            }
-            return View(Product);
+                Id = Product.Id,
+                Name = Product.Name,
+                Description = Product.Description,
+                FilePath = Product.FilePath,
+            };
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(Products Product, int id)
+        public async Task<IActionResult> Update(ProductUpdateVM Product, int id)
         {
 
-            if (id == null) return BadRequest();
-
-            Products? dbProduct = await _dbContext.Products.FindAsync(id);
-
-            if (dbProduct == null) return NotFound();
+            if (id == Product.Id) return BadRequest();
 
             if (!ModelState.IsValid) return View(Product);
-            
+            var dbProduct = await _dbContext.Products.FindAsync(id);
+            dbProduct.Name = Product.Name;
+            dbProduct.Description = Product.Description;
+            dbProduct.Price = Product.Price;
+            if (dbProduct == null) return NotFound();
+
             bool isExist = await _dbContext.Products
             .AnyAsync(x => x.Name.ToLower().Trim() == Product.Name.ToLower().Trim() && x.Id != id);
 
@@ -96,9 +109,26 @@ namespace Final_Back.Areas.Admin.Controllers
                 ModelState.AddModelError("Name", "The title is already exist");
                 return View();
             }
-            dbProduct.Name = Product.Name;
-            dbProduct.Description = Product.Description;
-            dbProduct.Price = Product.Price;
+            if (!Product.Photo.ContentType.Contains("image/"))
+            {
+                ModelState.AddModelError("Photo", "The file must be in Image format.");
+                return View(Product);
+            }
+            if (Product.Photo.Length / 1024 > 80)
+            {
+                ModelState.AddModelError("Photo", "The size of the image should not exceed 80 MB.");
+                return View(Product);
+            }
+            
+            if(Product.Photo != null)
+            {
+                string path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbProduct.FilePath);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                _dbContext.Products.Remove(dbProduct);
+            }
 
             await _dbContext.SaveChangesAsync();
 

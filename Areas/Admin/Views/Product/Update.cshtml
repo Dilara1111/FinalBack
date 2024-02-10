@@ -1,11 +1,12 @@
-﻿@model Final_Back.Models.Products
+﻿@using Final_Back.Areas.Admin.ViewModels.Product
+@model ProductUpdateVM
 
 <div class="col-lg-6">
     <div class="card">
         <div class="card-body">
             <div class="card-title">Add product</div>
             <hr>
-            <form method="post" asp-action="create" asp-controller="product" asp-area="admin">
+            <form method="post" enctype="multipart/form-data" asp-action="create" asp-controller="product" asp-area="admin">
                 <div class="form-group">
                     <label asp-for="Name">Name</label>
                     <input asp-for="Name" class="form-control" placeholder="Add name">
@@ -16,6 +17,9 @@
                     <input asp-for="Description" class="form-control" placeholder="Add description">
                     <span class="text-danger" asp-validation-for="Description"></span>
                 </div>
+                <div>
+                    <img style="width:150px;height:150px" src="~/assets/img/@Model.FilePath"/>
+                </div>
                 <div class="form-group">
                     <label asp-for="Photo">Photo</label>
                     <input asp-for="Photo" class="form-control">
@@ -25,6 +29,11 @@
                     <label asp-for="Price">Price</label>
                     <input asp-for="Price" class="form-control" placeholder="Add price">
                     <span class="text-danger" asp-validation-for="Price"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Quantity">Quantity</label>
+                    <input asp-for="Quantity" class="form-control" placeholder="Add Quantity">
+                    <span class="text-danger" asp-validation-for="Quantity"></span>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-light px-4">Submit</button>

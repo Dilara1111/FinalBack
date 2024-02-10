@@ -18,6 +18,8 @@ namespace Final_Back.Models
         [Required(ErrorMessage = "The Photo must be download")]
         [NotMapped]
         public IFormFile Photo { get; set; }
+        public int Quantity { get; set; }
+        public ICollection<BasketProduct> BasketProducts { get; set; }
 
     }
 }

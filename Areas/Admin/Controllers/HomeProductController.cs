@@ -1,6 +1,6 @@
-﻿using Final_Back.DAL;
+﻿using Final_Back.Areas.Admin.ViewModels.HomeProduct;
+using Final_Back.DAL;
 using Final_Back.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,36 +65,66 @@ namespace Final_Back.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            if (id == null) return BadRequest();            
-            HomeProducts homeProduct = await _dbContext.HomeProducts.FindAsync(id);
-            if (homeProduct == null) return NotFound();
-            return View(homeProduct);
+            var Product = await _dbContext.Products.FindAsync(id);
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var model = new HomeProductUpdateVM
+            {
+                Id = Product.Id,
+                Name = Product.Name,
+                Description = Product.Description,
+                FilePath = Product.FilePath,
+            };
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(HomeProducts homeProduct, int id)
+        public async Task<IActionResult> Update(HomeProductUpdateVM Product, int id)
         {
-            if (id == null) return BadRequest();            
-            HomeProducts? dbProduct = await _dbContext.HomeProducts.FindAsync(id);
+
+            if (id == Product.Id) return BadRequest();
+
+            if (!ModelState.IsValid) return View(Product);
+            var dbProduct = await _dbContext.Products.FindAsync(id);
+            dbProduct.Name = Product.Name;
+            dbProduct.Description = Product.Description;
+            dbProduct.Price = Product.Price;
             if (dbProduct == null) return NotFound();
-            if (!ModelState.IsValid)
-            {
-                return View(homeProduct);
-            }
+
             bool isExist = await _dbContext.Products
-           .AnyAsync(x => x.Name.ToLower().Trim() == homeProduct.Name.ToLower().Trim() && x.Id != id);
+            .AnyAsync(x => x.Name.ToLower().Trim() == Product.Name.ToLower().Trim() && x.Id != id);
 
             if (isExist)
             {
-                ModelState.AddModelError("Name", "This name already is exist");
+                ModelState.AddModelError("Name", "The title is already exist");
                 return View();
             }
-            dbProduct.Name = homeProduct.Name;
-            dbProduct.Description = homeProduct.Description;
-            dbProduct.Price = homeProduct.Price;
+            if (!Product.Photo.ContentType.Contains("image/"))
+            {
+                ModelState.AddModelError("Photo", "The file must be in Image format.");
+                return View(Product);
+            }
+            if (Product.Photo.Length / 1024 > 80)
+            {
+                ModelState.AddModelError("Photo", "The size of the image should not exceed 80 MB.");
+                return View(Product);
+            }
+
+            if (Product.Photo != null)
+            {
+                string path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbProduct.FilePath);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                _dbContext.Products.Remove(dbProduct);
+            }
 
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+
         }
         #endregion
         #region Delete

@@ -1,11 +1,12 @@
-﻿@model Final_Back.Models.HomeProducts
+﻿@using Final_Back.Areas.Admin.ViewModels.HomeProduct;
+@model HomeProductUpdateVM
 
 <div class="col-lg-6">
     <div class="card">
         <div class="card-body">
             <div class="card-title">Add product</div>
             <hr>
-            <form method="post" asp-action="create" asp-controller="homeProduct" asp-area="admin">
+            <form method="post" enctype="multipart/form-data" asp-action="create" asp-controller="homeProduct" asp-area="admin">
                 <div class="form-group">
                     <label asp-for="Name">Name</label>
                     <input asp-for="Name" class="form-control" placeholder="Add Name">
@@ -16,10 +17,13 @@
                     <input asp-for="Description" class="form-control" placeholder="Add Description">
                     <span class="text-danger" asp-validation-for="Description"></span>
                 </div>
+                <div>
+                    <img style="width:100px;height:100px" src="~/assets/img/@Model.FilePath"/>
+                </div>
                 <div class="form-group">
-                    <label asp-for="FilePath">Photo</label>
-                    <input asp-for="FilePath" class="form-control" placeholder="Add Photo">
-                    <span class="text-danger" asp-validation-for="FilePath"></span>
+                    <label asp-for="Photo">Photo</label>
+                    <input asp-for="Photo" class="form-control">
+                    <span class="text-danger" asp-validation-for="Photo"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Price">Price</label>

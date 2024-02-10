@@ -1,19 +1,25 @@
-﻿@section Style{
+﻿@using Final_Back.ViewModels.Contact;
+@model ContactIndexVM
+@{
+    ViewBag.Title = "Contact";
+}
+@section Style{
     <link rel="stylesheet" href="~/assets/css/contact.css">
 }
+
 <section class="contact-container">
     <div class="contact-container1">
-        <h1>Get In Touch</h1>
-        <p>Sit vulputate faucibus eget eget scelerisque faucibus malesuada nullam mollis ut montes, dui scelerisque ornare.</p>
+        <h1>@Model.ContactInfo.Title</h1>
+        <p>@Model.ContactInfo.Description</p>
         <i aria-hidden="true" class="fas fa-map-marker-alt" style="color: #5c9735;"></i>
         <span>VISIT US</span>
-        <P>123 Demo St, San Francisco, CA 45678, United States</P>
+        <P>@Model.ContactInfo.Address</P>
         <i aria-hidden="true" class="fas fa-phone" style="color: #5c9735;"></i>
         <span>CALL US</span>
-        <p>+123-456-7890</p>
+        <p>@Model.ContactInfo.PhoneNumber</p>
         <i aria-hidden="true" class="fas fa-envelope" style="color: #5c9735;"></i>
         <span>EMAIL US</span>
-        <p>mail@example.com</p>
+        <p>@Model.ContactInfo.Email</p>
         <p>______________________</p>
         <span>FALLOW US</span>
         <div>

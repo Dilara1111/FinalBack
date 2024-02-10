@@ -1,4 +1,6 @@
-﻿using Final_Back.DAL;
+﻿using Final_Back.Areas.Admin.ViewModels.Customer;
+using Final_Back.Areas.Admin.ViewModels.Customer;
+using Final_Back.DAL;
 using Final_Back.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -58,24 +60,58 @@ namespace Final_Back.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            if (id == null) return BadRequest();
-            
-            Customers customer = await _dbContext.Customers.FindAsync(id);
-            if (customer == null)
+            var Customer = await _dbContext.Customers.FindAsync(id);
+            if (id == null)
             {
-                return NotFound();
+                return BadRequest();
             }
-            return View(customer);
+            var model = new CustomerUpdateVM
+            {
+                Id = Customer.Id,
+                Name = Customer.Name,
+                Description = Customer.Description,
+                FilePath = Customer.FilePath,
+            };
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(Customers customer, int id)
+        public async Task<IActionResult> Update(CustomerUpdateVM Customer, int id)
         {
-            if (id == null) return BadRequest();
-            customer = await _dbContext.Customers.FindAsync(id);
-            if (customer == null) return NotFound();
-            if (!ModelState.IsValid) return View(customer);
+
+            if (id == Customer.Id) return BadRequest();
+
+            if (!ModelState.IsValid) return View(Customer);
+            var dbCustomer = await _dbContext.Customers.FindAsync(id);
+            dbCustomer.Name = Customer.Name;
+            dbCustomer.Description = Customer.Description;
+            dbCustomer.FilePath = Customer.FilePath;
+            if (dbCustomer == null) return NotFound();
+
+            if (!Customer.Photo.ContentType.Contains("image/"))
+            {
+                ModelState.AddModelError("Photo", "The file must be in Image format.");
+                return View(Customer);
+            }
+            if (Customer.Photo.Length / 1024 > 60)
+            {
+                ModelState.AddModelError("Photo", "The size of the image should not exceed 60 MB.");
+                return View(Customer);
+            }
+
+            if (Customer.Photo != null)
+            {
+                string path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbCustomer.FilePath);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                _dbContext.Customers.Remove(dbCustomer);
+            }
+
             await _dbContext.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
+
         }
         #endregion
         #region Delete

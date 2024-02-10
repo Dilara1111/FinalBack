@@ -10,5 +10,6 @@ namespace Final_Back.ViewModels.Home
 		public List<Customers> Customers { get; set; }
 		public GiftCard GiftCard { get; set; }
 		public List<Icons> Icons { get; set; }
-	}
+        public User User { get; set; }
+    }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vcviad/Rctco99AFEu4wBZDL3SPa1767J32+UaV8a34=",
+  "Hash": "KzGCQNoMu3kb8iC79fQyczdcwD+KxNWoqR5lABhEkFQ=",
   "Source": "Final Back",
   "BasePath": "_content/Final Back",
   "Mode": "Default",
@@ -10132,6 +10132,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\contact.css"
     },
     {
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\css\\login.css",
+      "SourceId": "Final Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\",
+      "BasePath": "_content/Final Back",
+      "RelativePath": "assets/css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\login.css"
+    },
+    {
       "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\css\\plants.css",
       "SourceId": "Final Back",
       "SourceType": "Discovered",
@@ -10844,6 +10861,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\app.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\Basket.js",
+      "SourceId": "Final Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\",
+      "BasePath": "_content/Final Back",
+      "RelativePath": "assets/js/Basket.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\Basket.js"
     }
   ]
 }

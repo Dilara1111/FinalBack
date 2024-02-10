@@ -1,0 +1,49 @@
+﻿@using Final_Back.ViewModels.Basket;
+@model BasketIndexVM
+@section Style{
+    <link rel="stylesheet" href="/assets/css/login.css">
+}
+<div class="card">
+    @{
+        if (Model.BasketProducts != null)
+        {
+            <div class="card-body">
+                <div class="d-flex; justify-content-lg-between">
+                    <h5 class="card-title">Basket Products</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Photo</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var basketProduct in Model.BasketProducts)
+                                {
+                                    <tr class="basketproduct" id="@basketProduct.Id">
+                                        <td><img style="width:100px" src="~/assets/img/@basketProduct.PhotoPath"></td>
+                                        <td>@basketProduct.Name</td>
+                                        <td>@basketProduct.Price</td>
+                                        <td>@basketProduct.Quantity</td>
+                                        <th>
+                                            <button data-id="@basketProduct.Id" class="btn btn-secondary removeBtn" type="submit">Delete</button>
+                                        </th>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h2>Empty...</h2>
+        }
+    }
+</div>

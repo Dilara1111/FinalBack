@@ -28,7 +28,7 @@
     justify-content: space-between;
   }
   .container{
-    background-image:url(~/assets/img/hero-section-bg.jpg);
+    background-image:url(/assets/img/hero-section-bg.jpg);
     background-size: cover; 
     filter: brightness(0.5);
   }
@@ -124,7 +124,7 @@ br{
   padding: 50px;
 }
 .gift-card-img{
-  background-image: url(~/assets/img/footer-background.jpg); 
+  background-image: url(/assets/img/footer-background.jpg); 
   background-size: cover; 
 }
 .gift-card{

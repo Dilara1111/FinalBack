@@ -28,6 +28,7 @@
                                 <td>@product.Name</td>
                                 <td>@product.Description</td>
                                 <td>@product.Price</td>
+                                <td>@product.Quantity</td>
                                 <th>
                                     <a asp-controller="product" asp-action="update" asp-area="admin" asp-route-id="@product.Id" class="btn btn-secondary">Update</a>
                                     <form class="d-inline" method="post" asp-controller="product" asp-action="delete" asp-area="admin" asp-route-id="@product.Id">

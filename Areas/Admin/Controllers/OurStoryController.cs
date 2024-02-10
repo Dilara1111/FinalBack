@@ -1,5 +1,6 @@
 ﻿using Final_Back.DAL;
 using Final_Back.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,9 +10,11 @@ namespace Final_Back.Areas.Admin.Controllers
     public class OurStoryController : Controller
     {
         private readonly AppDbContext _dbContext;
-        public OurStoryController(AppDbContext appDbContext)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public OurStoryController(AppDbContext appDbContext,IWebHostEnvironment webHostEnvironment)
         {
             _dbContext = appDbContext;
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<IActionResult> Index()
         {
@@ -19,21 +22,34 @@ namespace Final_Back.Areas.Admin.Controllers
 
             return View(ourStory);
         }
-        //#region Create
-        //[HttpGet]
-        //public async Task<IActionResult> Create()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Create(OurStory ourStory)
-        //{
-        //    if (!ModelState.IsValid) return View(ourStory);
-        //    await _dbContext.OurStory.AddAsync(ourStory);
-        //    await _dbContext.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-        //#endregion
+        #region Create
+        public async Task<IActionResult> Create(OurStory ourStory)
+        {
+            if (!ModelState.IsValid) return View(ourStory);
+           
+            if (!ourStory.Photo.ContentType.Contains("image/"))
+            {
+                ModelState.AddModelError("Photo", "The file must be in Image format.");
+                return View(ourStory);
+            }
+            if (ourStory.Photo.Length / 1024 > 60)
+            {
+                ModelState.AddModelError("Photo", "The size of the image should not exceed 60 MB.");
+                return View(ourStory);
+            }
+            var filename = $"{Guid.NewGuid()}_{ourStory.Photo.FileName}";
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", filename);
+
+            using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+            {
+                await ourStory.Photo.CopyToAsync(fileStream);
+            }
+            ourStory.FilePath = filename;
+            await _dbContext.OurStory.AddAsync(ourStory);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
         #region Update
         [HttpGet]
         public async Task<IActionResult> Update(int id)
@@ -60,6 +76,11 @@ namespace Final_Back.Areas.Admin.Controllers
         {
             var dbOurStory = await _dbContext.OurStory.FindAsync(id);
             if (dbOurStory == null) return NotFound();
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbOurStory.FilePath);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
             _dbContext.OurStory.Remove(dbOurStory);
             await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

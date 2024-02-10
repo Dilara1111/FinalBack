@@ -1,0 +1,41 @@
+﻿@model Final_Back.Models.OurStory
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Add product</div>
+            <hr>
+            <form method="post" enctype="multipart/form-data" asp-action="create" asp-controller="homeProduct" asp-area="admin">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Add Name">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title">Description</label>
+                    <input asp-for="Title" class="form-control" placeholder="Add Description">
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description1">Description</label>
+                    <input asp-for="Description1" class="form-control" placeholder="Add Description">
+                    <span class="text-danger" asp-validation-for="Description1"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description2">Description</label>
+                    <input asp-for="Description2" class="form-control" placeholder="Add Description">
+                    <span class="text-danger" asp-validation-for="Description2"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo">Photo</label>
+                    <input asp-for="Photo" class="form-control">
+                    <span class="text-danger" asp-validation-for="Photo"></span>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-light px-4" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
