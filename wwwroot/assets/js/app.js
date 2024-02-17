@@ -23,7 +23,8 @@ productImage.addEventListener('mouseout', function() {
         urunler[i].style.display = 'block';
                 } else {
         urunler[i].style.display = 'none';
-                }
+        }
+
             }
         }
 

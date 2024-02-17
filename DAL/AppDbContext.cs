@@ -20,7 +20,8 @@ namespace Final_Back.DAL
 		public DbSet<AboutContainer> AboutContainer { get; set; }
 		public DbSet<ContactInfo> ContactInfo { get; set; }
 		public DbSet<Basket> Basket { get; set; }
-		public DbSet<BasketProduct> BasketProducts { get; set; }
+        public DbSet<BasketProduct> BasketProducts { get; set; }
+		public DbSet<Message> Message { get; set; }	
 
 
 	}

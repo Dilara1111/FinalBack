@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Final_Back.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin")]
     public class DashboardController : Controller
     {
-        [Area("Admin")]
         public IActionResult Index()
         {
             return View();

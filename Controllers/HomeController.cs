@@ -28,7 +28,7 @@ namespace Final_Back.Controllers
 			HomeIndexVM homeVM = new HomeIndexVM
 			{
 				ElementorTitle = await _appDbContext.ElementorTitle.FirstOrDefaultAsync(),
-                HomeProducts = await _appDbContext.HomeProducts.ToListAsync(),
+                Products = await _appDbContext.Products.Skip(6).Take(6).ToListAsync(),
 				OurStory = await _appDbContext.OurStory.FirstOrDefaultAsync(),
                 Customers = await _appDbContext.Customers.ToListAsync(),
 				GiftCard = await _appDbContext.GiftCard.FirstOrDefaultAsync(),

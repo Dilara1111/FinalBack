@@ -2,6 +2,7 @@
 using Final_Back.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 
 namespace Final_Back.Controllers
 {
@@ -15,6 +16,7 @@ namespace Final_Back.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+        #region Login
         public IActionResult Login()
         {
             return View();
@@ -37,12 +39,17 @@ namespace Final_Back.Controllers
             }   
             return RedirectToAction(nameof(Index), "Home");
         }
+        #endregion
+        #region Logout
         [HttpGet]
+        
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(Index), "Home");
         }
+        #endregion
+        #region Register
         public IActionResult Register()
         {
             return View();
@@ -69,6 +76,6 @@ namespace Final_Back.Controllers
             }
             return RedirectToAction(nameof(Login));
         }
-
+        #endregion
     }
 }

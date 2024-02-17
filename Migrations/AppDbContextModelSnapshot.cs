@@ -125,6 +125,9 @@ namespace Final_Back.Migrations
                     b.Property<int>("BasketId")
                         .HasColumnType("int");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -313,6 +316,31 @@ namespace Final_Back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ImgContainer");
+                });
+
+            modelBuilder.Entity("Final_Back.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageInfo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Message");
                 });
 
             modelBuilder.Entity("Final_Back.Models.OurStory", b =>

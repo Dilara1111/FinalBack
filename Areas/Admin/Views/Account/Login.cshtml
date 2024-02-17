@@ -1,0 +1,30 @@
+﻿@using Final_Back.Areas.Admin.ViewModels.Account;
+@model AccountLoginVM
+@{
+    Layout = null;
+}
+
+<h2 style="text-align:center; padding-bottom:20px;">Login</h2>
+<div class="" style="display:flex; justify-content:center;align-items:center;">
+    <div>
+        <form asp-action="login" asp-controller="account" asp-area="admin" class="col-6">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label asp-for="Username" class="form-label"></label><br />
+                <input autocomplete="off" asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username"></span>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <label asp-for="Password" class="form-label" for="form2Example2"></label><br />
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password"></span>
+
+            </div>
+            <div asp-validation-summary="ModelOnly"></div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4" style="background-color:#5c9735; color: #fff"><a asp-action="index" asp-area="admin" asp-controller="dashboard">Sign in</a></button>
+        </form>
+    </div>
+</div>

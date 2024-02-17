@@ -16,14 +16,22 @@ namespace Final_Back.Controllers
         }
         public async Task<IActionResult> Index(PlantsIndexVM model)
         {
-            var products = await PaginateProductsAsync(model.Take, model.Page);
+            var productFilter = FilterByTitle(model.Title);
+            var products = await PaginateProductsAsync(model.Take, model.Page, model.Title);
             model = new PlantsIndexVM 
-            { 
+            {
+                //Products = productFilter.ToList(),
                 Products = products,
                 PageCount = await GetPageCountAsync(model.Take),
                 Page = model.Page,
             };
             return View(model);
+        }
+
+        public IQueryable<Products> FilterByTitle(string? title)
+        {
+           return _appDbContext.Products
+                .Where(p => !string.IsNullOrEmpty(title) ? p.Name.Contains(title) : true);
         }
         private async Task<int> GetPageCountAsync(int take)
         {
@@ -32,11 +40,22 @@ namespace Final_Back.Controllers
             return (int)Math.Ceiling((decimal)productsCount / take);
         }
            
-        private async Task<List<Products>> PaginateProductsAsync(int take, int page)
+        private async Task<List<Products>> PaginateProductsAsync(int take, int page, string? title)
         {
+            if (title != null)
+            {
+                var productsWithTitle = await _appDbContext.Products
+                 .Where(p => !string.IsNullOrEmpty(title) ? p.Name.Contains(title) : true)
+                .OrderBy(p => p.Id)
+                .Skip((page - 1) * take)
+                .Take(take)
+                .ToListAsync();
+
+                return productsWithTitle;
+            }
             var products = await _appDbContext.Products
                 .OrderBy(p => p.Id)
-                .Skip((page-1)*take)
+                .Skip((page - 1) * take)
                 .Take(take)
                 .ToListAsync();
 

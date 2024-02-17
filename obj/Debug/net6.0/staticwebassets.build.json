@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KzGCQNoMu3kb8iC79fQyczdcwD+KxNWoqR5lABhEkFQ=",
+  "Hash": "Vvj+l8HnYt7v9pzz8zkoGJle/ViHvPkzy+oBGsp/ZoM=",
   "Source": "Final Back",
   "BasePath": "_content/Final Back",
   "Mode": "Default",
@@ -10183,6 +10183,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\style.css"
     },
     {
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\79bdd8cb-2259-4ad3-8fbf-ada5a28c572f_plants-store-testimonials-avatar-img-2.jpg",
+      "SourceId": "Final Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\",
+      "BasePath": "_content/Final Back",
+      "RelativePath": "assets/img/79bdd8cb-2259-4ad3-8fbf-ada5a28c572f_plants-store-testimonials-avatar-img-2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\79bdd8cb-2259-4ad3-8fbf-ada5a28c572f_plants-store-testimonials-avatar-img-2.jpg"
+    },
+    {
       "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\footer-background.jpg",
       "SourceId": "Final Back",
       "SourceType": "Discovered",
@@ -10829,23 +10846,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\plants-store-testimonials-avatar-img-1.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\plants-store-testimonials-avatar-img-2.jpg",
-      "SourceId": "Final Back",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\",
-      "BasePath": "_content/Final Back",
-      "RelativePath": "assets/img/plants-store-testimonials-avatar-img-2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\plants-store-testimonials-avatar-img-2.jpg"
-    },
-    {
       "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\app.js",
       "SourceId": "Final Back",
       "SourceType": "Discovered",
@@ -10863,12 +10863,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\app.js"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\Basket.js",
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\basket.js",
       "SourceId": "Final Back",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\",
       "BasePath": "_content/Final Back",
-      "RelativePath": "assets/js/Basket.js",
+      "RelativePath": "assets/js/basket.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -10877,7 +10877,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\js\\Basket.js"
+      "OriginalItemSpec": "wwwroot\\assets\\js\\basket.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\fetch.js",
+      "SourceId": "Final Back",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\",
+      "BasePath": "_content/Final Back",
+      "RelativePath": "assets/js/fetch.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\fetch.js"
     }
   ]
 }

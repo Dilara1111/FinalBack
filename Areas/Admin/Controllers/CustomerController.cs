@@ -1,13 +1,14 @@
 ﻿using Final_Back.Areas.Admin.ViewModels.Customer;
-using Final_Back.Areas.Admin.ViewModels.Customer;
 using Final_Back.DAL;
 using Final_Back.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_Back.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin")]
     public class CustomerController : Controller
     {
         private readonly AppDbContext _dbContext;
@@ -86,32 +87,32 @@ namespace Final_Back.Areas.Admin.Controllers
             dbCustomer.Description = Customer.Description;
             dbCustomer.FilePath = Customer.FilePath;
             if (dbCustomer == null) return NotFound();
-
-            if (!Customer.Photo.ContentType.Contains("image/"))
+            if(Customer.Photo != null)
             {
-                ModelState.AddModelError("Photo", "The file must be in Image format.");
-                return View(Customer);
-            }
-            if (Customer.Photo.Length / 1024 > 60)
-            {
-                ModelState.AddModelError("Photo", "The size of the image should not exceed 60 MB.");
-                return View(Customer);
-            }
-
-            if (Customer.Photo != null)
-            {
-                string path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbCustomer.FilePath);
-                if (System.IO.File.Exists(path))
+                if (!Customer.Photo.ContentType.Contains("image/"))
                 {
-                    System.IO.File.Delete(path);
+                    ModelState.AddModelError("Photo", "The file must be in Image format.");
+                    return View(Customer);
                 }
-                _dbContext.Customers.Remove(dbCustomer);
-            }
+                if (Customer.Photo.Length / 1024 > 60)
+                {
+                    ModelState.AddModelError("Photo", "The size of the image should not exceed 60 MB.");
+                    return View(Customer);
+                }
 
+                if (Customer.Photo != null)
+                {
+                    string path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbCustomer.FilePath);
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    _dbContext.Customers.Remove(dbCustomer);
+                }
+            }           
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-
         }
         #endregion
         #region Delete
@@ -120,7 +121,7 @@ namespace Final_Back.Areas.Admin.Controllers
         {
             var dbCustomer = await _dbContext.Customers.FindAsync(id);
             if (dbCustomer == null) return NotFound();
-            var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", dbCustomer.FilePath);
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img");
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);

@@ -1,4 +1,5 @@
 using Final_Back.DAL;
+using Final_Back.Helpers;
 using Final_Back.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,4 +34,11 @@ app.MapControllerRoute(
 
 
 app.MapDefaultControllerRoute();
+var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+using (var scope = scopeFactory.CreateScope())
+{
+	var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+	var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
+	await DbInitializer.SeedAsync(userManager, roleManager);
+}
 app.Run();

@@ -8,6 +8,7 @@ namespace Final_Back.ViewModels.Plant
         public int Take { get; set; } = 9;
         public int Skip { get; set; } 
         public int PageCount { get; set; } 
+        public string? Title { get; set; }
     }
     
 }

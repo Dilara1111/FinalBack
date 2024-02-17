@@ -4,13 +4,13 @@
     <link rel="stylesheet" href="/assets/css/login.css">
 }
     <h2 style="text-align:center; padding-bottom:20px;">Login</h2>
-<div class="byRuslan" style="display:flex; justify-content:center;align-items:center;">
+<div class="" style="display:flex; justify-content:center;align-items:center;">
     <div>
         <form asp-action="login" asp-controller="account" class="col-6">
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <label asp-for="Username" class="form-label"></label><br />
-                <input asp-for="Username" class="form-control" />
+                <input autocomplete="off" asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username"></span>
             </div>
 

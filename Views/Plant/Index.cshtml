@@ -6,6 +6,7 @@
 @section Style{
     <link rel="stylesheet" href="~/assets/css/plants.css">
 }
+
 <section class="second" style="padding: 100px 200px; margin: 100px 58px; background-color:#fff;">
     <div class="home-shop">
         <div>
@@ -20,6 +21,16 @@
             </nav>
         </div>
     </div>
+    <div class="filter-section">
+        <form>
+            <div>
+                <label asp-for="@Model.Title"></label>
+                <input asp-for="@Model.Title"/>
+            </div>
+                <button type="submit" class="button-wrapper"><a>Submit</a></button>
+        </form>
+
+    </div>
 
             <div class="shopping-container">
     @{
@@ -27,7 +38,7 @@
         {
                 <div class="product">
                     <img src="~/assets/img/@products.FilePath" alt="">
-                    <button class="add-to-cart" id="addToCart"><a href="" style="color: #fff;">Add to Cart</a></button>
+                    <button class="add-to-cart" id="addToCart" style="color:white;" data-id="@products.Id">Add to Cart</button>
                     <div class="top"><h2 style="color:#141A0F;font-size: 16px;">@products.Name</h2></div>
                     <div class=""><span style="color:#4d4f48; font-size: 13px;">@products.Description</span></div>
                     <span style="color:#4d4f48;font-size: 14px;">@products.Price</span>
@@ -46,44 +57,6 @@
         }
         </ul>
     </div>
-    <script>
-        var urunlerDiv = document.getElementById('urunler');
-        var sonrakiSayfaBtn = document.getElementById('sonrakiSayfaBtn');
-        var sayfaNumarasi = 1;
-        var urunler = document.querySelectorAll('.product');
-        var urunlerAdet = urunler.length;
-        var urunlerPerSayfa = 9;
-
-        function sayfaGoster(sayfa) {
-            var baslangicIndex = (sayfa - 1) * urunlerPerSayfa;
-            var bitisIndex = baslangicIndex + urunlerPerSayfa;
-
-            for (var i = 0; i < urunlerAdet; i++) {
-                if (i >= baslangicIndex && i < bitisIndex) {
-                    urunler[i].style.display = 'block';
-                } else {
-                    urunler[i].style.display = 'none';
-                }
-            }
-        }
-
-        function sonrakiSayfayiGoster() {
-            sayfaNumarasi++;
-            if ((sayfaNumarasi - 1) * urunlerPerSayfa < urunlerAdet) {
-                sayfaGoster(sayfaNumarasi);
-            } else {
-                // Eğer tüm ürünler gösterildiyse, isteğe bağlı olarak başa dönebilir veya bir mesaj gösterebilirsiniz.
-                sayfaNumarasi = 1;
-                sayfaGoster(sayfaNumarasi);
-            }
-        }
-
-        // İlk sayfayı göster
-        sayfaGoster(sayfaNumarasi);
-
-        // Düğmeye tıklandığında sonraki sayfayı göster
-        sonrakiSayfaBtn.addEventListener('click', sonrakiSayfayiGoster);
-    </script>
+    
 
 </section>
-

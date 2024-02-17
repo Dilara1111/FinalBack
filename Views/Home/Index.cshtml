@@ -12,7 +12,7 @@
             <h1 style="font-size: 72px; margin: 40px">@Model.ElementorTitle.Description </h1>
             <h1 style="font-size: 72px;">Your Home</h1>
             <div style="padding-bottom: 300px">
-                <button class="button-wrapper;"><a href="" style="color: #000; padding: 15px 20px; font-size: 15px; display: inline-block">Shop Now</a></button>
+                <button class="button-wrapper;"><a asp-action="index" asp-controller="plant" style="color: #000; padding: 15px 20px; font-size: 15px; display: inline-block">Shop Now</a></button>
             </div>
         </div>
     </div>
@@ -21,16 +21,16 @@
 <section class="second" style="padding: 0 200px; margin: 0 58px">
     <div style="padding:104px 30px 74px">
         <div class="con-inner">
-            <h2 style="font-size: 40px;">New Plants</h2> <button style="background-color: #5c9735; border:none"><a href="" style="color: #fff; padding: 15px 20px; font-size: 15px; display: inline-block">Shop Now</a></button>
+            <h2 style="font-size: 40px;">New Plants</h2> <button style="background-color: #5c9735; border:none"><a asp-action="index" asp-controller="plant" style="color: #fff; padding: 15px 20px; font-size: 15px; display: inline-block">Shop Now</a></button>
         </div>
     </div>
     <div class="shopping-container">
         @{
-            foreach (var item in Model.HomeProducts)
+            foreach (var item in Model.Products)
             {
                 <div class="product">
                     <img src="~/assets/img/@item.FilePath" alt="">
-                    <button class="add-to-cart" id="addToCart"><a href="" style="color: #fff;">Add To Cart</a></button>
+                    <button type="submit" class="add-to-cart" id="addToCart" data-id="@item.Id" data-quantity ="@item.Quantity">Add To Cart</button>
                     <div class="top"><h2 style="color:#141A0F;font-size: 16px;">@item.Name</h2></div>
                     <div class=""><span style="color:#4d4f48; font-size: 13px;">@item.Description</span></div>
                     <span style="color:#4d4f48;font-size: 14px;">@item.Price </span>

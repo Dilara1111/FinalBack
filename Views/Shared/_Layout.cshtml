@@ -12,37 +12,7 @@
 </head>
 <body>
     <section class="container">
-        <div class="header">
-            <div class="header-left"><a href="">Greenstore</a></div>
-            <div class="header-right">
-                <a asp-controller="Home" asp-action="index" style="margin-right: 15px;">Home</a>
-                <a asp-controller="Plant" asp-action="index" style="margin-right: 15px;">Plants</a>
-                <a asp-controller="About" asp-action="index" style="margin-right: 15px;">About</a>
-                <a asp-controller="Contact" asp-action="index" style="margin-right: 15px;">Contact</a>
-                <a href="" style="margin-right: 15px;">0.00$</a>
-                <a asp-controller="Account" asp-action="login">
-                <div class="cart-icon">
-                    <a asp-controller="Basket" asp-action="index">
-                        <i class="fa-solid fa-bag-shopping" style=" color: #5c9735"></i>
-                    </a>
-                    <span class="item-count" style="color:black">0</span>
-                </div>
-                    <i style="margin-left: 30px; margin-right: 10px; color:#5c9735" class="fa-regular fa-user"></i>
-                </a>
-                @{
-                    if(User.Identity.IsAuthenticated)
-                    {
-                        <span>@User.Identity.Name</span>
-                        <a asp-action="logout" asp-controller="account" class="nav-link"><i class="bax bax-log-out bax-sm bx-tada-hover text-ptimary"></i></a>
-                    }
-                    else
-                    {
-                        <a asp-action="login" asp-controller="account" class="nav-link"><i class="bax bax-log-in bax-sm bx-tada-hover text-ptimary"></i></a>
-
-                    }
-                }
-            </div>
-        </div>
+       @await Component.InvokeAsync("Header")
         @RenderSection("Header", false)
     </section>
     <div>
@@ -78,9 +48,10 @@
 <span class="elementor-icon elementor-animation-">
 <i aria-hidden="true" class="fas fa-hand-holding-heart"></i> </span> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<script src="~/assets/js/fetch.js"> </script>
 <script src="~/assets/js/app.js"></script>
-<script src="~/assets/js/Basket.js"></script>
+<script src="~/assets/js/basket.js"></script>
+
 @RenderSection("Script",false)
 
 

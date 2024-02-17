@@ -1,11 +1,13 @@
 ﻿using Final_Back.DAL;
 using Final_Back.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_Back.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles="SuperAdmin")]
     public class ContactInfoController : Controller
     {
         private readonly AppDbContext _appDbContext;
