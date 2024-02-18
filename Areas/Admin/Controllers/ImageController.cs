@@ -34,7 +34,7 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Create(ImgContainer Image)
         {
             if (!ModelState.IsValid) return View(Image);
-            if (!Image.PhotoFile.ContentType.Contains("image/"))
+            if (!Image.PhotoFile.ContentType.Contains("img/"))
             {
                 ModelState.AddModelError("PhotoFile", "The file must be in Image format.");
             }
@@ -60,7 +60,7 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var Image = await _dbContext.ImgContainer.FindAsync(id);
-            if (id == null)
+            if (Image == null)
             {
                 return BadRequest();
             }
@@ -80,7 +80,7 @@ namespace Final_Back.Areas.Admin.Controllers
             if (!ModelState.IsValid) return View(Image);
             var dbImage = await _dbContext.ImgContainer.FindAsync(id);
             if (dbImage == null) return NotFound();
-            if (!Image.PhotoFile.ContentType.Contains("image/"))
+            if (Image.PhotoFile.ContentType.Contains("img/"))
             {
                 ModelState.AddModelError("PhotoFile", "The file must be in Image format.");
                 return View(Image);

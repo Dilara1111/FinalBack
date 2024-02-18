@@ -24,6 +24,11 @@ builder.Services.AddIdentity<User, IdentityRole>(
 		//options.SignIn.RequireConfirmedEmail=true; emaili tesdiqlememish daxil ola bilmesin
 	}
 	).AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddSingleton<IFileService, FileService>();
+//builder.Services.AddScoped<IFileService, FileService>(); her defe yer ayirir 
+//builder.Services.AddTransient<IFileService, FileService>(); her defe yer ayirir, amma application baglananda silir yaddashdan
+
+
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseAuthentication();

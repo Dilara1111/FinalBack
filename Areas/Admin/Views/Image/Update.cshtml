@@ -6,6 +6,7 @@
         <div class="card-body">
             <hr>
             <form method="post" enctype="multipart/form-data" asp-action="update" asp-controller="image" asp-area="admin">
+                <input typr="hidden" asp-for="Image" />
                 <div class="form-group">
                     <div>
                         <img src="~/assets/img/@Model.Image"/>

@@ -18,7 +18,6 @@
             data: {
                 name: name,
                 email: email,
-
                 messageInfo: message
             },
             success: function (response) {

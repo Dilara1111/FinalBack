@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Final_Back.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Final_Back.ViewModels
 {

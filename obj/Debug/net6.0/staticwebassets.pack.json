@@ -2393,10 +2393,6 @@
       "PackagePath": "staticwebassets\\assets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\79bdd8cb-2259-4ad3-8fbf-ada5a28c572f_plants-store-testimonials-avatar-img-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\79bdd8cb-2259-4ad3-8fbf-ada5a28c572f_plants-store-testimonials-avatar-img-2.jpg"
-    },
-    {
       "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\Group-107.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\Group-107.jpg"
     },
@@ -2547,6 +2543,10 @@
     {
       "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\plants-store-testimonials-avatar-img-1.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\plants-store-testimonials-avatar-img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\img\\plants-store-testimonials-avatar-img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\plants-store-testimonials-avatar-img-2.jpg"
     },
     {
       "Id": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\wwwroot\\assets\\js\\app.js",

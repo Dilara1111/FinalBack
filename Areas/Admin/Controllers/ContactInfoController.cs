@@ -1,4 +1,5 @@
 ﻿using Final_Back.DAL;
+using Final_Back.Helpers;
 using Final_Back.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,12 @@ namespace Final_Back.Areas.Admin.Controllers
     public class ContactInfoController : Controller
     {
         private readonly AppDbContext _appDbContext;
-        public ContactInfoController(AppDbContext appDbContext)
+        private readonly IFileService _fileService;
+
+        public ContactInfoController(AppDbContext appDbContext, IFileService fileService)
         {
             _appDbContext = appDbContext;
+            _fileService = fileService;
         }
 
         public async Task<IActionResult> Index()
@@ -22,6 +26,12 @@ namespace Final_Back.Areas.Admin.Controllers
             return View(contactInfo);
         }
         #region Create
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Create(ContactInfo contactInfo)
         {
             if(!ModelState.IsValid) return View(contactInfo);
@@ -34,18 +44,29 @@ namespace Final_Back.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            if (id == null) return BadRequest();
-            ContactInfo contactInfo = await _appDbContext.ContactInfo.FindAsync(id);
-            if (contactInfo == null) return NotFound();
-            return View(contactInfo);
+            var contact = await _appDbContext.ContactInfo.FirstOrDefaultAsync(c=> c.Id ==id );
+            if (contact == null) return NotFound();
+            var model = new ContactInfo
+            {
+                Id = contact.Id,
+                PhoneNumber = contact.PhoneNumber,
+                Email = contact.Email,
+                Title = contact.Title,
+                Address = contact.Address,
+            };
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Update(ContactInfo contactInfo, int id)
         {
-            if (id == null) return BadRequest();
-            contactInfo = await _appDbContext.ContactInfo.FindAsync(id);
-            if (contactInfo == null) return NotFound();
+            if (id != contactInfo.Id) return BadRequest();
             if (!ModelState.IsValid) return View(contactInfo);
+            var dbcontactInfo = await _appDbContext.ContactInfo.FindAsync(id);
+            dbcontactInfo.Email = contactInfo.Email;
+            //dbcontactInfo.Title = contactInfo.Title;
+            dbcontactInfo.PhoneNumber = contactInfo.PhoneNumber;
+            dbcontactInfo.Address = contactInfo.Address;
+            if (dbcontactInfo == null) return NotFound();
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

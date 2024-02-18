@@ -1,5 +1,6 @@
 ﻿using Final_Back.Areas.Admin.ViewModels.HomeProduct;
 using Final_Back.DAL;
+using Final_Back.Helpers;
 using Final_Back.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,14 @@ namespace Final_Back.Areas.Admin.Controllers
     {
         private readonly AppDbContext _dbContext;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public HomeProductController(AppDbContext appDbContext, IWebHostEnvironment webHostEnvironment)
+        private readonly IFileService _fileService;
+
+        public HomeProductController(AppDbContext appDbContext, IWebHostEnvironment webHostEnvironment
+            , IFileService fileService)
         {
             _dbContext = appDbContext;
             _webHostEnvironment = webHostEnvironment;
+            _fileService = fileService;
         }
         public async Task<IActionResult> Index()
         {
@@ -41,7 +46,7 @@ namespace Final_Back.Areas.Admin.Controllers
                 ModelState.AddModelError("Name", "Product is already available");
                 return View(homeProduct);
             }
-            if (!homeProduct.Photo.ContentType.Contains("image/"))
+            if (homeProduct.Photo.ContentType.Contains("image/"))
             {
                 ModelState.AddModelError("Photo", "The file must be in Image format.");
             }
@@ -68,7 +73,7 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var Product = await _dbContext.Products.FindAsync(id);
-            if (id == null)
+            if (Product == null)
             {
                 return BadRequest();
             }
@@ -85,7 +90,7 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Update(HomeProductUpdateVM Product, int id)
         {
 
-            if (id == Product.Id) return BadRequest();
+            if (id != Product.Id) return BadRequest();
 
             if (!ModelState.IsValid) return View(Product);
             var dbProduct = await _dbContext.Products.FindAsync(id);
