@@ -17,6 +17,7 @@ namespace Final_Back.Controllers
         public async Task<IActionResult> Index(PlantsIndexVM model)
         {
             var productFilter = FilterByTitle(model.Title);
+            //productFilter = FilterByPrice(model.MinPrice, model.MaxPrice,product);
             var products = await PaginateProductsAsync(model.Take, model.Page, model.Title);
             model = new PlantsIndexVM 
             {
@@ -32,6 +33,12 @@ namespace Final_Back.Controllers
         {
            return _appDbContext.Products
                 .Where(p => !string.IsNullOrEmpty(title) ? p.Name.Contains(title) : true);
+        }
+        public IQueryable<Products> FilterByPrice(int? minPrice,int maxPrice,IQueryable<Products> product)
+        {
+            return product
+                .Where(p => (minPrice != null ? p.Price >= minPrice : true)
+                && (maxPrice != null ? p.Price <= maxPrice : true));
         }
         private async Task<int> GetPageCountAsync(int take)
         {

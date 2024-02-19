@@ -11,7 +11,7 @@
     <div class="home-shop">
         <div>
             <nav style=" padding: 20px;">
-                <a href="index.html">Home</a>&nbsp;/&nbsp;Shop
+                <a asp-action="index" asp-controller="home">Home</a>&nbsp;/&nbsp;Shop
                 <p style="padding: 20px 0;">Showing 1-9 of 25 results</p>
             </nav>
         </div>
@@ -21,13 +21,17 @@
             </nav>
         </div>
     </div>
-    <div class="filter-section">
+    <div class="filter-section" style="display:flex;justify-content:center;align-items:center;">
         <form>
-            <div>
-                <label asp-for="@Model.Title"></label>
-                <input asp-for="@Model.Title"/>
+            <div >
+                <label asp-for="@Model.Title" style="font-weight: bold;"> Filter</label>
+                <input asp-for="@Model.Title" style="width: 200px; padding: 5px; border: 1px solid #ccc;" />
             </div>
-                <button type="submit" class="button-wrapper"><a>Submit</a></button>
+            
+                <button type="submit" class="filter">
+                    Submit
+                </button>
+           
         </form>
 
     </div>

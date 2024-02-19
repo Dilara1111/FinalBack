@@ -2,36 +2,71 @@
 @model BasketIndexVM
 @section Style{
     <link rel="stylesheet" href="/assets/css/login.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    @*<link rel="stylesheet" href="" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">*@
 }
         <div class="container">
             <div class="card">
 @{
     if (Model.BasketProducts != null)
     {
-                <div class="card-body">
-                    <h5 class="card-title">Basket Product</h5>
-                    <table class="table table-striped">
-                        <thead>
+                //<div class="card-body">
+                //    <h5 class="card-title">Basket Product</h5>
+                //    //<table class="table table-striped">
+                //    //    <thead>
+                //    //        <tr>
+                //    //            <th scope="col">Photo</th>
+                //    //            <th scope="col">Title</th>
+                //    //            <th scope="col">Price</th>
+                //    //            <th scope="col">Quantity</th>
+                //    //        </tr>
+                //    //    </thead>
+                //    //    <tbody>
+                //    //        @{
+                //    //            foreach (var basketProduct in Model.BasketProducts)
+                //    //            {
+                //    //                <tr class="basketProducts" id="@basketProduct.Id">
+                //    //                    <td><img style="width:100px" src="~/assets/img/@basketProduct.PhotoPath"></td>
+                //    //                    <td>@basketProduct.Name</td>
+                //    //                    <td>@basketProduct.Price</td>
+                //    //                    <td>@basketProduct.Quantity</td>
+                //    //                    <th>
+                //    //                        <button data-id="@basketProduct.Id" class="btn btn-secondary removebtn" type="submit">Delete</button>
+                //    //                    </th>
+                //    //                </tr>
+                //    //            }
+                //    //        }
+                //    //    </tbody>
+                //    //</table>
+                //</div>
+                <div>
+                    <table class="table table-striped" style="width: 100%; border-collapse: collapse;">
+                        <thead style="background-color: #f0f0f0;">
                             <tr>
-                                <th scope="col">Photo</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col" style="padding: 10px;">Photo</th>
+                                <th scope="col" style="padding: 10px;">Title</th>
+                                <th scope="col" style="padding: 10px;">Price</th>
+                                <th scope="col" style="padding: 10px;">Quantity</th>
+                                <th scope="col" style="padding: 10px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @{
                                 foreach (var basketProduct in Model.BasketProducts)
                                 {
-                                    <tr class="basketProducts" id="@basketProduct.Id">
-                                        <td><img style="width:100px" src="~/assets/img/@basketProduct.PhotoPath"></td>
-                                        <td>@basketProduct.Name</td>
-                                        <td>@basketProduct.Price</td>
-                                        <td>@basketProduct.Quantity</td>
-                                        <th>
-                                            <button data-id="@basketProduct.Id" class="btn btn-secondary removebtn" type="submit">Delete</button>
-                                        </th>
+                                    <tr class="basketProducts" id="@basketProduct.Id" style="border-bottom: 1px solid #ccc;">
+                                        <td style="padding: 10px;padding-left:100px"><img style="width:100px; display: block; margin: auto;" src="~/assets/img/@basketProduct.PhotoPath" alt="Product Photo"></td>
+                                        <td style="padding: 10px; padding-left:150px">@basketProduct.Name</td>
+                                        <td style="padding: 10px;padding-left:150px">@basketProduct.Price</td>
+                                        <td style="padding: 10px;padding-left:150px">@basketProduct.Quantity</td>
+                                        <td style="padding: 10px;padding-left:150px">
+                                            <button data-id="@basketProduct.Id" class="btn btn-secondary removebtn" type="submit" style="
+                                         border: none;
+                                         color: white;
+                                         padding: 10px 25px;
+                                         background-color: indianred">
+                                                Delete
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             }

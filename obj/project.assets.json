@@ -10866,11 +10866,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\Final Back.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\Final Back.csproj",
       "projectName": "Final Back",
-      "projectPath": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\Final Back.csproj",
+      "projectPath": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\Final Back.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Back\\obj\\",
+      "outputPath": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
