@@ -108,13 +108,13 @@ namespace Final_Back.Areas.Admin.Controllers
             }
             if (Product.Photo != null)
             {
-                if (!_fileService.IsImage(Product.Photo))
+                if (_fileService.IsImage(Product.Photo))
                 {
                     ModelState.AddModelError("Photo", "The file must be in Image format.");
                     return View(Product);
                 }
                 int maxSize = 60;
-                if (!_fileService.CheckSize(Product.Photo, maxSize))
+                if (_fileService.CheckSize(Product.Photo, maxSize))
                 {
                     ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} MB");
                     //Product.FilePath = dbProduct.FilePath; submit eleyende shekil silinmesin deye 

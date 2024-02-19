@@ -53,7 +53,7 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("/");
+            return RedirectToAction("index","home");
         }
         #endregion
     }

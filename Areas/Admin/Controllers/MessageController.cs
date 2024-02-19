@@ -18,7 +18,7 @@ namespace Final_Back.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            Message messages = await _appDbContext.Message.FirstOrDefaultAsync();
+            var  messages = await _appDbContext.Message.ToListAsync();
             return View(messages);
         }
         #region Delete

@@ -76,7 +76,7 @@ namespace Final_Back.Controllers
                 quantity = 1;
                 basketProduct = new BasketProduct
                 {
-                    Price = product.Price,
+                    Price =(int)product.Price,
                     BasketId = userBasket.Id,
                     ProductId = product.Id,
                     Quantity = quantity

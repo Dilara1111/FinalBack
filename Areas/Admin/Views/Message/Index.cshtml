@@ -1,17 +1,17 @@
 ﻿@using Final_Back.Models;
 @using Final_Back.ViewModels;
-@model Message
+@model List<Message>
 <div class="card">
     <div class="card-body">
         <div class="d-flex; justify-content-lg-between">
-            <h5 class="card-title">messages</h5>
-            <a asp-action="index" asp-controller="message" asp-area="admin" class="col-2 d-sm-inline-block btn btn-outline-success">Messages</a>
-        </div>
+            <h5 class="card-title">Messages</h5>
+@*            <a asp-action="index" asp-controller="message" asp-area="admin" class="col-2 d-sm-inline-block btn btn-outline-success">Messages</a>
+*@        </div>
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
+                        <th scope="col">FullName</th>
                         <th scope="col">Email</th>
                         <th scope="col">MessageInfo</th>
 
@@ -19,17 +19,20 @@
                 </thead>
                 <tbody>
 
-                    <tr>
-                        <td>@Model.Name</td>
-                        <td><@Model.Email></td>
-                        <th>@Model.MessageInfo</th>
-                        <th>
-                            <form class="d-inline" method="post" asp-controller="message" asp-action="delete" asp-area="admin" asp-route-id="@Model.Id">
-                                <button class="btn btn-secondary" type="submit">Delete</button>
-                            </form>
-                        </th>
-                    </tr>
+                    @foreach(var m in Model)
+                    {
+                        <tr>
+                            <td>@m.Name</td>
+                            <td>@m.Email</td>
+                            <th>@m.MessageInfo</th>
+                            <th>
+                                <form class="d-inline" method="post" asp-controller="message" asp-action="delete" asp-area="admin" asp-route-id="@m.Id">
+                                    <button class="btn btn-secondary" type="submit">Delete</button>
+                                </form>
+                            </th>
+                        </tr>
 
+                    }
                 </tbody>
             </table>
         </div>

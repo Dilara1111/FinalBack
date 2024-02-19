@@ -46,7 +46,7 @@ namespace Final_Back.Areas.Admin.Controllers
                 return View(customer);
             }
             int maxSize = 100;
-            if (_fileService.CheckSize(customer.Photo, maxSize))
+            if (!_fileService.CheckSize(customer.Photo, maxSize))
             {
                 ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} KB.");
                 return View(customer);
@@ -86,13 +86,13 @@ namespace Final_Back.Areas.Admin.Controllers
             dbCustomer.Description = Customer.Description;
             if (Customer.Photo != null) 
             {
-                if(!_fileService.IsImage(Customer.Photo))
+                if(_fileService.IsImage(Customer.Photo))
                 {
                     ModelState.AddModelError("Photo", "The file must be in Image format.");
                     return View(Customer);
                 }
                 int maxSize = 60;
-                if (!_fileService.CheckSize(Customer.Photo, maxSize))
+                if (_fileService.CheckSize(Customer.Photo, maxSize))
                 {
                     ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} MB");
                     //Customer.FilePath = dbCustomer.FilePath; submit eleyende shekil silinmesin deye 
