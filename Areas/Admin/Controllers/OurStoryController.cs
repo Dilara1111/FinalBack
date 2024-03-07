@@ -38,21 +38,25 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Create(OurStory ourStory)
         {
             if (!ModelState.IsValid) return View(ourStory);
-
-            if (!_fileService.IsImage(ourStory.Photo))
+            if(ourStory.Photo != null)
             {
-                ModelState.AddModelError("Photo", "The file must be in Image format.");
-                return View(ourStory);
+                if (!_fileService.IsImage(ourStory.Photo))
+                {
+                    ModelState.AddModelError("Photo", "The file must be in Image format.");
+                    return View(ourStory);
+                }
+                int maxSize = 100;
+                if (!_fileService.CheckSize(ourStory.Photo, maxSize))
+                {
+                    ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} KB.");
+                    return View(ourStory);
+                }
+                var filename = await _fileService.UploadAsync(ourStory.Photo);
+                ourStory.FilePath = filename;
             }
-            int maxSize = 100;
-            if (_fileService.CheckSize(ourStory.Photo, maxSize))
-            {
-                ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} KB.");
-                return View(ourStory);
-            }
-            var filename = await _fileService.UploadAsync(ourStory.Photo);
-            ourStory.FilePath = filename;
+           
             await _dbContext.OurStory.AddAsync(ourStory);
+
             await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -68,6 +72,8 @@ namespace Final_Back.Areas.Admin.Controllers
                 Id = ourStory.Id,
                 Photo = ourStory.Photo,
                 Name = ourStory.Name,
+                Description1 = ourStory.Description1,
+                Description2 = ourStory.Description2,
                 Title = ourStory.Title,
             };
             return View(model);
@@ -75,12 +81,13 @@ namespace Final_Back.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(OurStory ourStory, int id)
         {
-            if (id != ourStory.Id)  return BadRequest();
             if(!ModelState.IsValid) return View(ourStory);
+            if (id != ourStory.Id)  return BadRequest();
             var dbourStory = await _dbContext.OurStory.FindAsync(id);
-            dbourStory.Photo = ourStory.Photo;
             dbourStory.Name = ourStory.Name;
+            dbourStory.Title = ourStory.Title;
             dbourStory.Description1 = ourStory.Description1;
+            dbourStory.Description2 = ourStory.Description2;
             if (ourStory.Photo != null)
             {
                 if (!_fileService.IsImage(ourStory.Photo))
@@ -88,11 +95,11 @@ namespace Final_Back.Areas.Admin.Controllers
                     ModelState.AddModelError("Photo", "The file must be in Image format.");
                     return View(ourStory);
                 }
-                int maxSize = 60;
+                int maxSize = 100;
                 if (!_fileService.CheckSize(ourStory.Photo, maxSize))
                 {
                     ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} MB");
-                    //ourStory.FilePath = dbourStory.FilePath; submit eleyende shekil silinmesin deye 
+                    //ourStory.FilePath = dbourStory.FilePath; //submit eleyende shekil silinmesin deye 
                     return View(ourStory);
                 }
                 string path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img");

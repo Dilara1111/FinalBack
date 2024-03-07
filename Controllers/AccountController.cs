@@ -37,9 +37,10 @@ namespace Final_Back.Controllers
                 ModelState.AddModelError(string.Empty, "Password or username is invalid");
                 return View(model);
             }   
-            return RedirectToAction(nameof(Index), "Home");
+            return RedirectToAction("Index","Home", new {Areas=""});
         }
         #endregion
+
         #region Logout
         [HttpGet]
         
@@ -49,6 +50,7 @@ namespace Final_Back.Controllers
             return RedirectToAction(nameof(Index), "Home");
         }
         #endregion
+
         #region Register
         public IActionResult Register()
         {

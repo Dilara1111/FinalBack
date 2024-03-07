@@ -23,7 +23,7 @@ namespace Final_Back.Helpers
             {
                 Fullname = "Dilara Huseynova",
                 UserName = "admin",
-                Email = "huseynova@gmail.com",
+                Email = "huseynova.8885@gmail.com",
             };
             if (await userManager.FindByNameAsync(admin.UserName) == null) 
             {

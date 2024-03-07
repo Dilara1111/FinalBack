@@ -14,12 +14,12 @@ namespace Final_Back.Models
         [Required(ErrorMessage = "The price must be written")]
 
         public double Price { get; set; }
+        public int Quantity { get; set; }
         public string? FilePath { get; set; }
-        [Required(ErrorMessage = "The Photo must be download")]
+        [Required]
         [NotMapped]
         public IFormFile Photo { get; set; }
-        public int Quantity { get; set; }
-        public ICollection<BasketProduct> BasketProducts { get; set; }
+        public ICollection<BasketProduct>? BasketProducts { get; set; }
 
     }
 }

@@ -13,7 +13,7 @@
                 <a asp-controller="Basket" asp-action="index">
                     <i class="fa-solid fa-bag-shopping" style=" color: #5c9735"></i>
                 </a>
-                <span class="item-count" style="color:black" data-quantity="@Model.Quantity">@Model.Quantity</span>
+                <span class="item-count" id="item-count" style="color:black" data-quantity="@Model.Quantity">@Model.Quantity</span>
             </div>
         </a>
         @{

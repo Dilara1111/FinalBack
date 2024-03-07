@@ -47,7 +47,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AboutComponent");
+                    b.ToTable("AboutComponent", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.AboutContainer", b =>
@@ -91,7 +91,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AboutContainer");
+                    b.ToTable("AboutContainer", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.Basket", b =>
@@ -111,7 +111,7 @@ namespace Final_Back.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Basket");
+                    b.ToTable("Basket", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.BasketProduct", b =>
@@ -140,7 +140,7 @@ namespace Final_Back.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BasketProducts");
+                    b.ToTable("BasketProducts", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.ContactInfo", b =>
@@ -173,7 +173,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactInfo");
+                    b.ToTable("ContactInfo", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.Customers", b =>
@@ -197,7 +197,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.ElementorTitle", b =>
@@ -218,7 +218,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ElementorTitle");
+                    b.ToTable("ElementorTitle", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.GiftCard", b =>
@@ -247,7 +247,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GiftCard");
+                    b.ToTable("GiftCard", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.HomeProducts", b =>
@@ -274,7 +274,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HomeProducts");
+                    b.ToTable("HomeProducts", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.Icons", b =>
@@ -299,7 +299,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Icons");
+                    b.ToTable("Icons", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.ImgContainer", b =>
@@ -315,7 +315,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImgContainer");
+                    b.ToTable("ImgContainer", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.Message", b =>
@@ -340,7 +340,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message");
+                    b.ToTable("Message", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.OurStory", b =>
@@ -372,7 +372,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OurStory");
+                    b.ToTable("OurStory", (string)null);
                 });
 
             modelBuilder.Entity("Final_Back.Models.Products", b =>
@@ -402,7 +402,7 @@ namespace Final_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

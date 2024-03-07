@@ -40,30 +40,36 @@ namespace Final_Back.Areas.Admin.Controllers
         public async Task<IActionResult> Create(Customers customer)
         {
             if (!ModelState.IsValid) return View(customer);
-            if (!_fileService.IsImage(customer.Photo))
+            if (customer.Photo != null)
             {
-                ModelState.AddModelError("Photo", "The file must be in Image format.");
-                return View(customer);
-            }
-            int maxSize = 100;
-            if (!_fileService.CheckSize(customer.Photo, maxSize))
-            {
-                ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} KB.");
-                return View(customer);
-            }
+                if (!_fileService.IsImage(customer.Photo))
+                {
+                    ModelState.AddModelError("Photo", "The file must be in Image format.");
+                    return View(customer);
+                }
+                int maxSize = 30;
+                if (!_fileService.CheckSize(customer.Photo, maxSize))
+                {
+                    ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} KB.");
+                    return View(customer);
+                }
+
             var filename = await _fileService.UploadAsync(customer.Photo);
             customer.FilePath = filename;
+            }
+            
             await _dbContext.Customers.AddAsync(customer);
             await _dbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
         #endregion
+
         #region Update
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var Customer = await _dbContext.Customers.FirstOrDefaultAsync(c => c.Id == id);
-           
+            var Customer = await _dbContext.Customers
+                .FirstOrDefaultAsync(c => c.Id == id);          
             if (Customer == null) return NotFound();            
             var model = new CustomerUpdateVM
             {
@@ -86,13 +92,13 @@ namespace Final_Back.Areas.Admin.Controllers
             dbCustomer.Description = Customer.Description;
             if (Customer.Photo != null) 
             {
-                if(_fileService.IsImage(Customer.Photo))
+                if(!_fileService.IsImage(Customer.Photo))
                 {
                     ModelState.AddModelError("Photo", "The file must be in Image format.");
                     return View(Customer);
                 }
-                int maxSize = 60;
-                if (_fileService.CheckSize(Customer.Photo, maxSize))
+                int maxSize = 30;
+                if (!_fileService.CheckSize(Customer.Photo, maxSize))
                 {
                     ModelState.AddModelError("Photo", $"The size of the image should not exceed {maxSize} MB");
                     //Customer.FilePath = dbCustomer.FilePath; submit eleyende shekil silinmesin deye 
@@ -109,14 +115,13 @@ namespace Final_Back.Areas.Admin.Controllers
         }
         #endregion
 
-
         #region Delete
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var dbCustomer = await _dbContext.Customers.FindAsync(id);
             if (dbCustomer == null) return NotFound();
-            var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img");
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img",dbCustomer.FilePath);
             _fileService.Delete(path);
             _dbContext.Customers.Remove(dbCustomer);
             await _dbContext.SaveChangesAsync();

@@ -20,7 +20,7 @@
                         {
                             <tr>
                                 <th>@image.Id</th>
-                                <td><img style="width:100px" src="~/assets/img/@image.Image"></td>                                
+                                <td><img style="width:100px;height:100px;" src="~/assets/img/@image.Image"></td>                                
                                 <th>
                                     <a asp-controller="image" asp-action="update" asp-area="admin" asp-route-id="@image.Id" class="btn btn-secondary">Update</a>
                                     <form class="d-inline" method="post" asp-controller="image" asp-action="delete" asp-area="admin" asp-route-id="@image.Id">

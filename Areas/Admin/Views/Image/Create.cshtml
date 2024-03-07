@@ -6,6 +6,7 @@
             <div class="card-title">Add Image</div>
             <hr>
             <form enctype="multipart/form-data" method="post" asp-action="create" asp-controller="Image" asp-area="admin">
+                <input type="hidden" asp-for="Image"/>
                 <div class="form-group">
                     <label asp-for="PhotoFile">Photo</label>
                     <input asp-for="PhotoFile" class="form-control">

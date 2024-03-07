@@ -12,9 +12,9 @@ namespace Final_Back.Models
         public string Description1 { get; set; }
         public string Description2 { get; set; }
         public string? PhotoPath { get; set; }
-        [Required]
+        
         [NotMapped]
-        public IFormFile Photo { get; set; }
+        public IFormFile? Photo { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

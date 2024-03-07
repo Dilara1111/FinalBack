@@ -13,8 +13,8 @@ namespace Final_Back.Models
         [Required(ErrorMessage ="The Description must be written")]
         public string Description { get; set; }
         public string? FilePath { get; set; }
-        [Required(ErrorMessage ="The photo must be download")]
+        //[Required(ErrorMessage ="The photo must be download")]
         [NotMapped]
-        public IFormFile Photo { get; set; }
+        public IFormFile? Photo { get; set; }
     }
 }

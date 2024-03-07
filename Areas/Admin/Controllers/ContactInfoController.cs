@@ -40,6 +40,7 @@ namespace Final_Back.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
         #endregion
+
         #region Update
         [HttpGet]
         public async Task<IActionResult> Update(int id)
@@ -51,7 +52,6 @@ namespace Final_Back.Areas.Admin.Controllers
                 Id = contact.Id,
                 PhoneNumber = contact.PhoneNumber,
                 Email = contact.Email,
-                Title = contact.Title,
                 Address = contact.Address,
             };
             return View(model);
@@ -61,16 +61,16 @@ namespace Final_Back.Areas.Admin.Controllers
         {
             if (id != contactInfo.Id) return BadRequest();
             if (!ModelState.IsValid) return View(contactInfo);
+            //if (dbcontactInfo == null) return NotFound();
             var dbcontactInfo = await _appDbContext.ContactInfo.FindAsync(id);
             dbcontactInfo.Email = contactInfo.Email;
-            //dbcontactInfo.Title = contactInfo.Title;
             dbcontactInfo.PhoneNumber = contactInfo.PhoneNumber;
             dbcontactInfo.Address = contactInfo.Address;
-            if (dbcontactInfo == null) return NotFound();
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
         #endregion
+
         #region Delete
         [HttpPost]
         public async Task<IActionResult> Delete(int id)

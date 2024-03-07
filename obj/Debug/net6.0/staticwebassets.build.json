@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ca61l03Sk92FjHBAVB/uzmqlO/0fHFMavmJHBbzeRQw=",
+  "Hash": "ezstB5/hgjbApw/K8epGF2j10LonHOacorpSh8bwALo=",
   "Source": "Final Back",
   "BasePath": "_content/Final Back",
   "Mode": "Default",
@@ -10183,12 +10183,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\assets\\img\\3e1e9b73-fd8b-47d9-b635-ad6f23094cc3_plants-store-testimonials-avatar-img-2.jpg",
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\assets\\img\\3454e2e8-3ded-4a92-9fdf-41d81af272db_plants-store-gallery-img-5.jpg",
       "SourceId": "Final Back",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\",
       "BasePath": "_content/Final Back",
-      "RelativePath": "assets/img/3e1e9b73-fd8b-47d9-b635-ad6f23094cc3_plants-store-testimonials-avatar-img-2.jpg",
+      "RelativePath": "assets/img/3454e2e8-3ded-4a92-9fdf-41d81af272db_plants-store-gallery-img-5.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -10197,15 +10197,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\3e1e9b73-fd8b-47d9-b635-ad6f23094cc3_plants-store-testimonials-avatar-img-2.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\img\\3454e2e8-3ded-4a92-9fdf-41d81af272db_plants-store-gallery-img-5.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\assets\\img\\b20d4634-2538-449f-9330-4605bfd068ce_plants-store-testimonial-avatar-img.jpg",
+      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\assets\\img\\f1291806-6fb1-441a-b855-c2086fe2067a_plants-store-testimonials-avatar-img-2.jpg",
       "SourceId": "Final Back",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\",
       "BasePath": "_content/Final Back",
-      "RelativePath": "assets/img/b20d4634-2538-449f-9330-4605bfd068ce_plants-store-testimonial-avatar-img.jpg",
+      "RelativePath": "assets/img/f1291806-6fb1-441a-b855-c2086fe2067a_plants-store-testimonials-avatar-img-2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -10214,24 +10214,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\b20d4634-2538-449f-9330-4605bfd068ce_plants-store-testimonial-avatar-img.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\assets\\img\\e5557c31-f4fb-437e-ba53-204f00b6b573_b20d4634-2538-449f-9330-4605bfd068ce_plants-store-testimonial-avatar-img.jpg",
-      "SourceId": "Final Back",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\",
-      "BasePath": "_content/Final Back",
-      "RelativePath": "assets/img/e5557c31-f4fb-437e-ba53-204f00b6b573_b20d4634-2538-449f-9330-4605bfd068ce_plants-store-testimonial-avatar-img.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\e5557c31-f4fb-437e-ba53-204f00b6b573_b20d4634-2538-449f-9330-4605bfd068ce_plants-store-testimonial-avatar-img.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\img\\f1291806-6fb1-441a-b855-c2086fe2067a_plants-store-testimonials-avatar-img-2.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\OneDrive - ITM STEP MMC\\Desktop\\Garage\\Final Project\\Final Back\\wwwroot\\assets\\img\\footer-background.jpg",

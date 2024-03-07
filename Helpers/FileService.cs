@@ -13,7 +13,7 @@ namespace Final_Back.Helpers
         }
         public async Task<string> UploadAsync(IFormFile file)
         {
-            var filename = $"{Guid.NewGuid()}_{file.FileName}";
+            var filename = $"{Guid.NewGuid()}_{file.FileName}"; // DateTime.UtcNow
             var path = Path.Combine(_webHostEnvironment.WebRootPath, "assets/img", filename);
 
             using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
@@ -25,11 +25,11 @@ namespace Final_Back.Helpers
     
         public bool IsImage(IFormFile file)
         {
-            return file.ContentType.Contains("img/");
+            return file.ContentType.Contains("image/");
         }
         public bool CheckSize(IFormFile file,int maxSize)
         {
-            if(file.Length > maxSize)
+            if(file.Length / 1024 > maxSize)
             {
                 return false;
             }

@@ -70,7 +70,8 @@ namespace Final_Back.Controllers
                 await _dbcontext.Basket.AddAsync(userBasket);
                 await _dbcontext.SaveChangesAsync();
             }
-            var basketProduct = await _dbcontext.BasketProducts.FirstOrDefaultAsync(bp => bp.ProductId == id);
+            var basketProduct = await _dbcontext.BasketProducts.
+                FirstOrDefaultAsync(bp => bp.BasketId == userBasket.Id && bp.ProductId == id);
             if (basketProduct == null)
             {
                 quantity = 1;

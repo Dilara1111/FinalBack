@@ -15,6 +15,7 @@ namespace Final_Back.Areas.Admin.ViewModels.Product
         public double Price { get; set; }
         public string? FilePath { get; set; }
         public IFormFile? Photo { get; set; }
+        [Required]
         public int Quantity { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Final_Back.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.GetUserAsync(Request.HttpContext.User);
-            if (user != null)
+            if (user != null && user.Basket!=null)
             {
                 var basket = await _dbContext.Basket
                .Include(bp => bp.BasketProducts)
@@ -37,7 +37,7 @@ namespace Final_Back.ViewComponents
                 }
                 foreach (var item in price)
                 {
-                    priceIndex += item.Price;
+                    priceIndex += item.Price * item.Quantity;
                 }
 
                 HeaderVM headerVMs = new HeaderVM()
